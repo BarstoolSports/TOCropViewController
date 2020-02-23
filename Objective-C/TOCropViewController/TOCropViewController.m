@@ -998,9 +998,7 @@ static const CGFloat kTOCropViewControllerToolbarHeight = 44.0f;
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.03f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             if (isDidCropToImageDelegateAvailable) {
                 [self.delegate cropViewController:self didCropToImage:image withRect:cropFrame angle:angle];
-            }
-
-            if (isDidCropToImageCallbackAvailable) {
+            } else if (isDidCropToImageCallbackAvailable) {
                 self.onDidCropToRect(image, cropFrame, angle);
             }
         });
